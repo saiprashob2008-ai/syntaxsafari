@@ -3,10 +3,10 @@
 # Interactive Language Learning App (CBSE Class 12 Project)
 
 import os
+from stack_utils import Stack
+import db
 
-#import db
-import time
-import csv
+
 # ---------- Utility Functions ----------
 def test(language,grade):
     for i in range(70):
@@ -163,4 +163,8 @@ def setup_database():
         cursor.close()
         conn.close()
 create_connection()
+
+setup_database()
+
 setup_database()'''
+
