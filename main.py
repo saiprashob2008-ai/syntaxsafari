@@ -8,13 +8,67 @@ import db
 
 
 # ---------- Utility Functions ----------
+def test(language,grade):
+    for i in range(70):
+        print()
+    g=language+" "+"test"+"_"+grade+".txt"
+    b=open(g,"r")
+    k=[]
+    v=[]
+    score=0
+    for i in range(5):
+        print("*"*121)
+        print(b.readline())
+        g=input('ENTER YOUR ANSWER')
+        k+=[g+"\n" ]
+    for i in range(5):
+        a=b.readline()
+        v+=[a]
+    print("*"*121)
+    
+    
+    print("ANSWER KEY")
+    print(k)
+    print(v)
+    
+    for i in range(5):
+        print("*"*121)
+        c=k[i]
+        b=v[i]
+        if c.lower()==b.lower():
+            print("correct answer")
+            score+=5
+            print("YOUR ANSWER " ,c)
+            print("CORRECT ANSWER",b)
+        else:
+            print("wrong answer")
+            print("YOUR ANSWER " ,c)
+            print("CORRECT ANSWER",b)
+    print("YOUR SCORE ",score)
+    
+        
+            
+        
+        
+        
+     
 def teachers(language,grade):
     a=language+"_"+grade+".txt"
     f=open(a,"r")
     b=f.readlines()
+    print()
+    print()
     for i in b:
-         print(b)
-         print("/n")
+         print("*"*121)
+         
+         print(i)
+         time.sleep(2)
+         print()
+    a=input("DO YOU WISH TO TAKE TEST")
+    if a =="y":
+        
+        test(language,grade)
+         
 def welcome_screen():
     print("="*50)
     print(" " * 15 + "Welcome to")
@@ -44,30 +98,23 @@ def get_user_info():
     teachers(language,grade)
     return name, grade, language, reason
 
-# ---------- Main Program ----------
 
-if __name__ == "__main__":
-    # Setup DB on first run
-    db.setup_database()
+    
+welcome_screen()
+get_user_info()
 
-    welcome_screen()
-    name, grade, language, reason = get_user_info()
 
-    print("\nThank you,", name)
-    print(f"We will help you learn {language} step by step!")
-# db.py
-# MySQL connection functions for SyntaxSafari
-# Uses mysql.connector (in CBSE syllabus)
-
-import mysql.connector
+'''import mysql.connector
 def create_connection():
     """Create MySQL connection (change user/password as per your system)."""
     try:
         conn = mysql.connector.connect(
-            host="localhost",
-            user="root",                   
-            password="koushikee2008", 
-            database="syntaxsafari"
+             host="localhost",
+             user="root",
+              password="Vishnu@12345",
+                database="new",
+                auth_plugin="mysql_native_password"
+            
         )
         return conn
     except Error as e:
@@ -76,19 +123,19 @@ def create_connection():
 
 def setup_database():
     """Create database and tables if they don't exist."""
-    try:
-        conn = mysql.connector.connect(
-            host="localhost",
-            user="root",
-            password="koushikee2008"
-        )
-        cursor = conn.cursor()
-        cursor.execute("CREATE DATABASE IF NOT EXISTS syntaxsafari")
-        cursor.close()
-        conn.close()
-    except Error as e:
-        print("Database creation error:", e)
-
+    
+    conn = mysql.connector.connect(
+                host="localhost",
+                user="root",
+                password="Vishnu@12345",
+                database="new",
+                auth_plugin="mysql_native_password"
+            )
+    cursor = conn.cursor()
+    cursor.execute("CREATE DATABASE IF NOT EXISTS syntaxsafari")
+    cursor.close()
+    conn.close()
+     
     # Now create tables
     conn = create_connection()
     if conn:
@@ -116,5 +163,8 @@ def setup_database():
         cursor.close()
         conn.close()
 create_connection()
+
 setup_database()
+
+setup_database()'''
 
